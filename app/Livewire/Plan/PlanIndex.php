@@ -29,7 +29,6 @@ class PlanIndex extends Component
     public function save()
     {
         $validate = $this->validate();
-        // dd($validate);
         auth()->user()->plans()->create($validate);
 
         $this->redirectRoute('plan', navigate: true);
