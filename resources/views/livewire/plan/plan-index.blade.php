@@ -25,6 +25,9 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
+                    @if (session('status'))
+                        <x-mary-alert title="{{ session('status') }}" class="alert-success mb-5" icon="o-check" dismissible />
+                    @endif
                     {{-- Button to create Plan and display modal --}}
                     <x-mary-button icon="o-plus" @click="$wire.myModal2 = true" wire:click="removeInput" class="btn-sm btn-primary mb-5" />
 

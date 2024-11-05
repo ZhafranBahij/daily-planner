@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->time('time')->nullable();
             $table->date('date')->nullable();
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

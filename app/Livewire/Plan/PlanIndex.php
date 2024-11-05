@@ -34,8 +34,6 @@ class PlanIndex extends Component
 
     public function edit($id)
     {
-        // $plan = Plan::find($id);
-        // $this->form->fill($plan->toArray());
         $this->form->fill(auth()->user()->plans()->find($id)->toArray());
         $this->myModal2 = true;
     }
@@ -43,6 +41,7 @@ class PlanIndex extends Component
     public function delete($id)
     {
         auth()->user()->plans()->find($id)->delete();
+        session()->flash('status', 'Data successfully deleted.');
         $this->redirectRoute('plan', navigate: true);
     }
 
@@ -50,7 +49,7 @@ class PlanIndex extends Component
     {
         $validate = $this->validate();
         auth()->user()->plans()->create($validate);
-
+        session()->flash('status', 'Data successfully created or updated.');
         $this->redirectRoute('plan', navigate: true);
     }
 
