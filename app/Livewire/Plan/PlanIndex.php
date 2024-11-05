@@ -12,18 +12,38 @@ class PlanIndex extends Component
 {
     public $plans, $headers;
     public PlanForm $form;
+    public $myModal2 = false;
 
     public function mount()
     {
-        $this->plans = auth()->user()->plans;
-        // dd($this->plans);
+        $this->plans = auth()->user()->plans->reverse();
 
         $this->headers = [
             ['key' => 'id', 'label' => 'No.'],
             ['key' => 'title', 'label' => 'Title'],
+            ['key' => 'description', 'label' => 'Description'],
             ['key' => 'time', 'label' => 'Time'],
-            ['key' => 'date', 'label' => 'Date']
+            ['key' => 'date', 'label' => 'Date'],
         ];
+    }
+
+    public function removeInput()
+    {
+        $this->form->reset();
+    }
+
+    public function edit($id)
+    {
+        // $plan = Plan::find($id);
+        // $this->form->fill($plan->toArray());
+        $this->form->fill(auth()->user()->plans()->find($id)->toArray());
+        $this->myModal2 = true;
+    }
+
+    public function delete($id)
+    {
+        auth()->user()->plans()->find($id)->delete();
+        $this->redirectRoute('plan', navigate: true);
     }
 
     public function save()
