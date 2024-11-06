@@ -1,0 +1,16 @@
+{
+    "name": "OrePuran",
+    "short_name": "OreP",
+    "background_color": "#6777ef",
+    "display": "fullscreen",
+    "description": "Daily planner just for self.",
+    "theme_color": "#6777ef",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
