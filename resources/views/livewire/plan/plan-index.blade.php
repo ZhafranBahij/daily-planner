@@ -12,10 +12,11 @@
             <x-mary-input label="Description" wire:model="form.description"   />
             <x-mary-datetime label="Date" wire:model="form.date" icon="o-calendar" />
             <x-mary-datetime label="Time" wire:model="form.time" icon="o-calendar" type="time" />
+            <x-mary-select label="Status" icon="o-check-circle" :options="$status_plan" wire:model="form.status" />
 
             <x-slot:actions>
                 <x-mary-button label="Cancel" @click="$wire.myModal2 = false" />
-                <x-mary-button label="Create" class="btn-primary" type="submit" spinner="save" />
+                <x-mary-button label="Submit" class="btn-primary" type="submit" spinner="save" />
             </x-slot:actions>
         </x-mary-form>
     </x-mary-modal>
@@ -37,7 +38,7 @@
                             @scope('actions', $plans)
                             <div class="flex flex-row gap-2">
                                 <x-mary-button icon="o-pencil" wire:click="edit({{ $plans->id }})" spinner class="btn-sm" />
-                                <x-mary-button icon="o-trash" wire:click="delete({{ $plans->id }})" spinner class="btn-sm" />
+                                <x-mary-button icon="o-trash" wire:click="delete({{ $plans->id }})" wire:confirm="Are you sure you want to delete this plan?" spinner class="btn-sm" />
                             </div>
                             @endscope
                         </x-mary-table>

@@ -8,7 +8,7 @@ use Livewire\Form;
 class PlanForm extends Form
 {
     #[Validate]
-    public $title, $description, $time, $date;
+    public $title, $description, $time, $date, $status;
 
     public function rules()
     {
@@ -17,6 +17,7 @@ class PlanForm extends Form
             'description' =>'required|string|max:255',
             'time' =>'required',
             'date' =>'required',
+            'status' =>'nullable',
         ];
     }
 }
